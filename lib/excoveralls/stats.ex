@@ -39,8 +39,10 @@ defmodule ExCoveralls.Stats do
   """
   def calculate_stats(modules) do
     Enum.reduce(modules, Map.new, fn(module, dict) ->
-      {:ok, lines} = Cover.analyze(module)
-      analyze_lines(lines, dict)
+      case Cover.analyze(module) do
+        {:ok, lines} -> analyze_lines(lines, dict)
+        {:error, {:not_cover_compiled, _}} -> dict
+      end
     end)
   end
 
