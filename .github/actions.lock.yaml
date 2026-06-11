@@ -1,5 +1,5 @@
 version: 1
-generated_at: 2026-05-25T13:46:37Z
+generated_at: 2026-06-11T15:38:13Z
 internal: []
 trusted:
   - action: actions/cache
@@ -11,17 +11,17 @@ trusted:
           - jobs.tests.steps.[2].uses
   - action: actions/checkout
     refs:
-      - v3
+      - f43a0e5ff2bd294095638e18286ca9a3d1956744
     occurrences:
-      v3:
+      f43a0e5ff2bd294095638e18286ca9a3d1956744:
         .github/workflows/tests.yml:
           - jobs.tests.steps.[0].uses
 external:
   - action: erlef/setup-beam
     refs:
-      - v1
+      - fc68ffb90438ef2936bbb3251622353b3dcb2f93
     occurrences:
-      v1:
+      fc68ffb90438ef2936bbb3251622353b3dcb2f93:
         .github/workflows/tests.yml:
           - jobs.tests.steps.[1].uses
 local: []
