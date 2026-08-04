@@ -30,7 +30,7 @@ jobs:
         with:
          otp-version: ${{ matrix.otp }}
          elixir-version: ${{ matrix.elixir }}
-      - uses: actions/cache@6f8efc29b200d32929f49075959781ed54ec270c # v3
+      - uses: step-security/runs-on-cache@c5b0cba15d05488ebc630ad8d1e95b3d9b35ac73 # v5.0.7
         with:
          path: deps
          key: ${{ runner.os }}-${{ matrix.elixir }}-otp${{ matrix.otp }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
