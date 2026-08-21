@@ -1,29 +1,37 @@
 version: 1
-generated_at: 2026-06-15T13:14:59Z
+generated_at: 2026-08-21T11:50:10Z
 internal: []
 trusted:
-  - action: actions/cache
-    refs:
-      - 6f8efc29b200d32929f49075959781ed54ec270c
-    occurrences:
-      6f8efc29b200d32929f49075959781ed54ec270c:
-        .github/workflows/tests.yml:
-          - jobs.tests.steps.[2].uses
   - action: actions/checkout
     refs:
       - f43a0e5ff2bd294095638e18286ca9a3d1956744
     occurrences:
       f43a0e5ff2bd294095638e18286ca9a3d1956744:
         .github/workflows/tests.yml:
-          - jobs.tests.steps.[0].uses
-external:
-  - action: erlef/setup-beam
-    refs:
-      - fc68ffb90438ef2936bbb3251622353b3dcb2f93
-    occurrences:
-      fc68ffb90438ef2936bbb3251622353b3dcb2f93:
-        .github/workflows/tests.yml:
           - jobs.tests.steps.[1].uses
+external:
+  - action: step-security/harden-runner
+    refs:
+      - 9af89fc71515a100421586dfdb3dc9c984fbf411
+    occurrences:
+      9af89fc71515a100421586dfdb3dc9c984fbf411:
+        .github/workflows/tests.yml:
+          - jobs.tests.steps.[0].uses
+  - action: step-security/mise-action
+    refs:
+      - 2796166110dee826668caddd4bffedae5116e7cd
+    occurrences:
+      2796166110dee826668caddd4bffedae5116e7cd:
+        .github/workflows/tests.yml:
+          - jobs.tests.steps.[2].uses
+  - action: step-security/runs-on-cache
+    refs:
+      - c5b0cba15d05488ebc630ad8d1e95b3d9b35ac73
+    occurrences:
+      c5b0cba15d05488ebc630ad8d1e95b3d9b35ac73:
+        .github/workflows/tests.yml:
+          - jobs.tests.steps.[3].uses
 local: []
 docker: []
 dynamic: []
+nested_floating_deps: []

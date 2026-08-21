@@ -6,3 +6,4 @@ erl_crash.dump
 /tmp
 /_build
 /doc
+.github/actions.lock.yaml
