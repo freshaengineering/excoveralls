@@ -5,21 +5,10 @@ on: [push, pull_request]
 jobs:
   tests:
     name: Run Tests
-    runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        include:
-          - otp: '21.3'
-            elixir: '1.11'
-          - otp: '26.0'
-            elixir: '1.15'
-          - otp: '27.0'
-            elixir: '1.17'
+    runs-on: "runs-on/runner=4cpu-linux-x64/run-id=${{ github.run_id }}"
     env:
       MIX_ENV: test
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      MISE_ELIXIR_VERSION: ${{ matrix.elixir }}
-      MISE_ERLANG_VERSION: ${{ matrix.otp }}
     steps:
       - name: Harden the runner
         uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2
@@ -33,8 +22,8 @@ jobs:
       - uses: step-security/runs-on-cache@c5b0cba15d05488ebc630ad8d1e95b3d9b35ac73 # v5.0.7
         with:
          path: deps
-         key: ${{ runner.os }}-${{ matrix.elixir }}-otp${{ matrix.otp }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
+         key: ${{ runner.os }}-mix-${{ hashFiles(format('{0}{1}', github.workspace, '/mix.lock')) }}
          restore-keys: |
-           ${{ runner.os }}-${{ matrix.elixir }}-otp${{ matrix.otp }}-mix-
+           ${{ runner.os }}-mix-
       - run: mix deps.get
       - run: mix coveralls.github
